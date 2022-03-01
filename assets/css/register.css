@@ -1,21 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@900&family=Rubik:wght@500&display=swap');
+
 * {
-  margin:0;
+  margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: 'Rubik', sans-serif;
 }
 
-html, body{
+html,
+body {
   display: grid;
   height: 100%;
   width: 100%;
   place-items: center;
   background: linear-gradient(to right, #156064 0%, #258d92 100%);
-  
 }
 
-.container{
+.container {
   background: #fff;
   max-width: 350px;
   width: 100%;
@@ -24,42 +25,40 @@ html, body{
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.15);
 }
 
-.container form .title{
+.container form .title {
   font-size: 30px;
   font-weight: 600;
   margin: 20px 0 10px 0;
   position: relative;
 }
 
-
-.container form .title::before{
-  content:'';
+.container form .title::before {
+  content: '';
   position: absolute;
   height: 3px;
   width: 29px;
   bottom: 2px;
-  border-radius:5px ;
+  border-radius: 5px;
   background: linear-gradient(to right, #156064 0%, #258d92 100%);
-
 }
 
-.container form .input-box{
+.container form .input-box {
   width: 100%;
   height: 45px;
   margin-top: 25px;
   position: relative;
 }
 
-.container form .input-box input{
+.container form .input-box input {
   height: 100%;
   width: 100%;
-  outline:none;
+  outline: none;
   font-size: 16px;
   border: none;
 }
 
-.underline::before{
-  position:absolute;
+.underline::before {
+  position: absolute;
   content: '';
   height: 2px;
   width: 100%;
@@ -68,58 +67,55 @@ html, body{
   bottom: 0;
 }
 
-.container form .underline::after{
+.container form .underline::after {
   position: absolute;
-  content:'';
+  content: '';
   height: 2px;
   width: 100%;
-  left:0;
-  bottom:0;
+  left: 0;
+  bottom: 0;
   background: linear-gradient(to right, #156064 0%, #258d92 100%);
   transform: scaleX(0);
 }
 
 .container form .input-box input:focus ~ .underline::after,
-.container form .input-box input:focus ~ .underline:valid{
-  transform:scaleX(1);
+.container form .input-box input:focus ~ .underline:valid {
+  transform: scaleX(1);
   transform-origin: left;
-  
 }
 
-.container form .input-box input[type="submit"]{
+.container form .input-box input[type='submit'] {
   font-size: 17px;
-  color:#fff;
+  color: #fff;
   cursor: pointer;
-  background:#258d92;
+  background: #258d92;
 }
 
-.container form .input-box input[type="submit"]:hover{
+.container form .input-box input[type='submit']:hover {
   background: #156064;
-
 }
 
-.container form .text{
+.container form .text {
   margin-top: 20px;
   text-align: center;
 }
 
-.container form .text label:hover{
+.container form .text label:hover {
   text-decoration: underline;
-  color:#156064;
+  color: #156064;
   cursor: pointer;
 }
 
-.container form a{
+.container form a {
   text-decoration: none;
-  color:#000;
+  color: #000;
 }
 
-.container form a:hover{
+.container form a:hover {
   text-decoration: underline;
-  color:#156064;
-  
+  color: #156064;
 }
 
-.container form a:visited{
-  color:#000;
+.container form a:visited {
+  color: #000;
 }
