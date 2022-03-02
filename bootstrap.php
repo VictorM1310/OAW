@@ -1,7 +1,10 @@
 <?php
 
+use DI\ContainerBuilder;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Tools\Setup;
+use Model\RSSFeed;
+use Repository\RSSFeedRepository;
 
 require_once "vendor/autoload.php";
 
@@ -14,7 +17,7 @@ $proxyDir = null;
 $cache = null;
 $useSimpleAnnotationReader = false;
 $config = Setup::createAnnotationMetadataConfiguration(
-  array(__DIR__ . "/src"),
+  array(__DIR__ . "/app/models"),
   $isDevMode,
   $proxyDir,
   $cache,
@@ -32,3 +35,9 @@ $conn = array(
 
 // obtaining the entity manager
 $entityManager = EntityManager::create($conn, $config);
+
+$builder = new ContainerBuilder();
+$builder->addDefinitions([
+  RSSFeedRepository::class => $entityManager->getRepository(RSSFeed::class)
+]);
+$container = $builder->build();
