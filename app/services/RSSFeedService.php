@@ -2,6 +2,7 @@
 
 namespace Service;
 
+use DateTime;
 use Feed;
 use Model\FeedNews;
 use Model\RSSFeed;
@@ -49,7 +50,7 @@ class RSSFeedService {
           'title' => (string) $news->title,
           'description' => (string) $news->description,
           'url' => (string) $news->link,
-          'pubDate' => (string) $news->pubDate,
+          'pubDate' => new DateTime((string) $news->pubDate),
           'categories' => (array) $news->category
         ]
       );

@@ -31,8 +31,14 @@ class FeedNews {
    */
   private $url;
 
+  /**
+   * @ORM\Column(type = "datetime")
+   */
   private $pubDate;
 
+  /**
+   * @ORM\Column(type = "simple_array", nullable = true)
+   */
   private $categories;
 
   /**
@@ -62,5 +68,17 @@ class FeedNews {
 
   public function getUrl() {
     return $this->url;
+  }
+
+  public function getPubDate() {
+    return $this->pubDate;
+  }
+
+  public function getCategories() {
+    return $this->categories;
+  }
+
+  public function getId() {
+    return $this->id;
   }
 }

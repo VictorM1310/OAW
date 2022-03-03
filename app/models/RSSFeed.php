@@ -35,6 +35,7 @@ class RSSFeed implements JsonSerializable {
 
   /**
    * @ORM\OneToMany(targetEntity = "FeedNews", mappedBy = "rssFeed", cascade = {"all"})
+   * @ORM\OrderBy({"pubDate" = "DESC"})
    */
   private $news;
 
@@ -54,6 +55,7 @@ class RSSFeed implements JsonSerializable {
 
   function jsonSerialize(): mixed {
     return [
+      'id' => $this->id,
       'title' => $this->title,
       'description' => $this->description,
       'url' => $this->url,
@@ -61,7 +63,9 @@ class RSSFeed implements JsonSerializable {
         return [
           'title' => $new->getTitle(),
           'description' => $new->getDescription(),
-          'url' => $new->getUrl()
+          'url' => $new->getUrl(),
+          'pubDate' => $new->getPubDate(),
+          'categories' => $new->getCategories()
         ];
       })->toArray()
     ];
