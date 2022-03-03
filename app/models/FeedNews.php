@@ -3,12 +3,13 @@
 namespace Model;
 
 use Doctrine\ORM\Mapping as ORM;
+use JsonSerializable;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass = "Repository\FeedNewsRepository")
  * @ORM\Table(name = "news")
  */
-class FeedNews {
+class FeedNews implements JsonSerializable {
   /**
    * @ORM\Id
    * @ORM\Column(type = "integer")
@@ -80,5 +81,15 @@ class FeedNews {
 
   public function getId() {
     return $this->id;
+  }
+
+  function jsonSerialize(): mixed {
+    return [
+      'title' => $this->title,
+      'description' => $this->description,
+      'url' => $this->url,
+      'pubDate' => $this->pubDate,
+      'categories' => $this->categories
+    ];
   }
 }

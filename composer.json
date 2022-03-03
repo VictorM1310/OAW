@@ -13,7 +13,9 @@
     "psr-4": {
       "Model\\": "app/models",
       "Repository\\": "app/repositories",
-      "Service\\": "app/services"
+      "Service\\": "app/services",
+      "Service\\Exception\\": "app/services/exceptions",
+      "Core\\": "app/core"
     }
   }
 }

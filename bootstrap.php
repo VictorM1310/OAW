@@ -3,8 +3,10 @@
 use DI\ContainerBuilder;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Tools\Setup;
+use Model\FeedNews;
 use Model\RSSFeed;
 use Repository\RSSFeedRepository;
+use Repository\FeedNewsRepository;
 
 require_once "vendor/autoload.php";
 
@@ -38,6 +40,7 @@ $entityManager = EntityManager::create($conn, $config);
 
 $builder = new ContainerBuilder();
 $builder->addDefinitions([
-  RSSFeedRepository::class => $entityManager->getRepository(RSSFeed::class)
+  RSSFeedRepository::class => $entityManager->getRepository(RSSFeed::class),
+  FeedNewsRepository::class => $entityManager->getRepository(FeedNews::class)
 ]);
 $container = $builder->build();
