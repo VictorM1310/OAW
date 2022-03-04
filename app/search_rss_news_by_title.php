@@ -11,7 +11,7 @@ $title = $_GET['title'] ?? null;
 
 if (!$title || !$rssId) {
   http_response_code(400);
-  echo json_encode(['error' => 'No query or RSS ID provided!']);
+  echo json_encode(['error' => 'No Title or RSS ID provided!']);
   exit();
 }
 
