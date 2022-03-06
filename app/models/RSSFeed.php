@@ -53,7 +53,7 @@ class RSSFeed implements JsonSerializable {
     }
   }
 
-  function jsonSerialize(): mixed {
+  function jsonSerialize() {
     return [
       'id' => $this->id,
       'title' => $this->title,

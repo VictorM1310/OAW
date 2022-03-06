@@ -83,7 +83,7 @@ class FeedNews implements JsonSerializable {
     return $this->id;
   }
 
-  function jsonSerialize(): mixed {
+  function jsonSerialize() {
     return [
       'title' => $this->title,
       'description' => $this->description,
