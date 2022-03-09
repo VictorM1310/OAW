@@ -180,6 +180,10 @@ body.dark .sidebar header .toggle {
   color: var(--text-color);
 }
 
+.search-box i:hover{
+  cursor: pointer;
+}
+
 /* Diseño de los apartados del menu */
 .sidebar li a {
   height: 100%;
