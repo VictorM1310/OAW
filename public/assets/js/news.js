@@ -33,6 +33,7 @@ function insertarCajasNews(title, description, categories,pubDate,url){
             <div class="card-body">
                 <p class="card-text" style="overflow:hidden">${description} </p>
                 <p class="card-text">${categories}</p>
+                <p class="card-text">${url}</p>
                 <footer><p class="card-text mb-3">${pubDate.date}</p></footer>
                 <a class="btn btn-outline-dark" href="${url}">Check the entire news</a>
             </div>
