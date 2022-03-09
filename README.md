@@ -56,6 +56,18 @@ http://localhost/oaw/app/search_rss_news_by_title.php?id=2&title=ucrania
 
 El backend esta hecho con la idea de que siempre haya un feed "seleccionado", por eso **_get_news_ordered_by.php_** y **_search_rss_news_by_title.php_** necesitan el id de un feed para recuperar la información.
 
+### [GET] update_rss_feeds.php
+
+Actualiza (de forma simple) las noticias del RSS Feed especificado. Retorna el RSS Feed que está actualmente "seleccionado" con las noticias actualizadas.
+
+```
+http://localhost/oaw/app/update_rss_feeds.php?selected_rss=1
+```
+
+## Documentación adicional
+
+[Postman](https://documenter.getpostman.com/view/14211662/UVkvKYZN)
+
 ## Hacer peticiones desde Ajax
 
 Utilizar el siguiente snippet como referencia para hacer peticiones Ajax.
