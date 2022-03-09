@@ -155,6 +155,10 @@ body.dark .sidebar header .toggle {
   margin-top: 25px;
 }
 
+/*padding de los 3 primeros apartados del menu*/
+.sidebar .menu-links{
+  padding-left: 0;
+}
 /* Formato y diseño de la caja de busqueda */
 .sidebar .search-box {
   background: var(--primary-color-light);
@@ -311,4 +315,35 @@ body.dark .switch::before {
 .sidebar.close ~ .home {
   left: 88px;
   width: calc(100% - 88px);
+}
+
+.card-header{
+  background: #246180;
+  border:none;
+  outline:none;
+}
+
+body.dark .card-header{
+  background: #246180;
+  border:none;
+  outline:none;
+}
+body.dark .card-body{
+  background: var(--primary-color);
+  transition: var(--tran-04);
+
+}
+body.dark .card-text{
+  color:var(--text-color);
+  transition: var(--tran-04);
+}
+body.dark .btn{
+  color: var(--toggle-color);
+  transition: var(--tran-04);
+  border-color: var(--toggle-color);  
+}
+
+body.dark .row{
+  color: var(--toggle-color);
+  transition: var(--tran-04);
 }
