@@ -34,7 +34,7 @@ class RSSFeed implements JsonSerializable {
   private $url;
 
   /**
-   * @ORM\OneToMany(targetEntity = "FeedNews", mappedBy = "rssFeed", cascade = {"all"})
+   * @ORM\OneToMany(targetEntity = "FeedNews", mappedBy = "rssFeed", cascade = {"all"}, orphanRemoval = true)
    * @ORM\OrderBy({"pubDate" = "DESC"})
    */
   private $news;
@@ -53,6 +53,10 @@ class RSSFeed implements JsonSerializable {
     }
   }
 
+  function clearNews() {
+    $this->news->clear();
+  }
+
   function jsonSerialize() {
     return [
       'id' => $this->id,
@@ -69,5 +73,17 @@ class RSSFeed implements JsonSerializable {
         ];
       })->toArray()
     ];
+  }
+
+  function getUrl() {
+    return $this->url;
+  }
+
+  function getTitle() {
+    return $this->title;
+  }
+
+  function getNews() {
+    return $this->news;
   }
 }
