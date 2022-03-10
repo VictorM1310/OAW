@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
 
 * {
+  box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
 :root {
@@ -24,8 +24,8 @@
 }
 
 body {
-  height: 100vh;
   background: var(--boddy-color);
+  height: 100vh;
   transition: var(--tran-05);
 }
 
@@ -42,14 +42,14 @@ body.dark {
 /*Sidebar*/
 /* Formato y diseño */
 .sidebar {
+  background: var(--sidebar-color);
+  height: 100%;
+  left: 0;
+  padding: 10px 14px;
   position: fixed;
   top: 0;
-  left: 0;
-  width: 250px;
-  height: 100%;
-  padding: 10px 14px;
-  background: var(--sidebar-color);
   transition: var(--tran-05);
+  width: 250px;
   z-index: 100;
 }
 
@@ -60,19 +60,19 @@ body.dark {
 
 /* Formato del contenido del menu */
 .sidebar li {
-  height: 50px;
-  margin-top: 10px;
-  list-style: none;
-  display: flex;
   align-items: center;
+  display: flex;
+  height: 50px;
+  list-style: none;
+  margin-top: 10px;
 }
 
 /* Formato de los íconos */
 .sidebar li .icon {
-  display: flex;
   align-items: center;
-  justify-content: center;
+  display: flex;
   font-size: 20px;
+  justify-content: center;
   min-width: 60px;
 }
 
@@ -96,20 +96,20 @@ body.dark {
 /* Código reutilizable */
 /* Formato del texto de encabezado */
 .sidebar .text {
+  color: var(--text-color);
   font-size: 16px;
   font-weight: 500;
-  color: var(--text-color);
+  opacity: 1;
   transition: var(--tran-04);
   white-space: nowrap;
-  opacity: 1;
 }
 
 /* Formato del logo con respecto al texto */
 .sidebar .image {
-  min-width: 60px;
-  display: flex;
   align-items: center;
+  display: flex;
   justify-content: center;
+  min-width: 60px;
 }
 
 /* Formato de la imagen */
@@ -118,26 +118,26 @@ body.dark {
 }
 /* Formato del encabezado */
 .sidebar header .image-text {
-  display: flex;
   align-items: center;
+  display: flex;
 }
 
 /* Formato del boton para abrir y cerrar el menu */
 .sidebar header .toggle {
-  position: absolute;
-  top: 50%;
-  right: -25px;
-  transform: translateY(-50%) rotate(180deg);
-  height: 25px;
-  width: 25px;
-  display: flex;
   align-items: center;
-  justify-content: center;
   background: var(--primary-color);
   border-radius: 50%;
-  cursor: pointer;
   color: var(--sidebar-color);
+  cursor: pointer;
+  display: flex;
+  height: 25px;
+  justify-content: center;
+  position: absolute;
+  right: -25px;
+  top: 50%;
+  transform: translateY(-50%) rotate(180deg);
   transition: var(--tran-03);
+  width: 25px;
 }
 
 /* Cambio de orientación del botón cuando se está cerrado el menu */
@@ -156,7 +156,7 @@ body.dark .sidebar header .toggle {
 }
 
 /*padding de los 3 primeros apartados del menu*/
-.sidebar .menu-links{
+.sidebar .menu-links {
   padding-left: 0;
 }
 /* Formato y diseño de la caja de busqueda */
@@ -168,31 +168,31 @@ body.dark .sidebar header .toggle {
 
 /* Diseño de la caja search */
 .search-box input {
-  height: 100%;
-  width: 100%;
-  outline: none;
+  background: var(--primary-color-light);
   border: none;
   border-radius: 6px;
+  color: var(--text-color);
   font-size: 16px;
   font-weight: 500;
-  background: var(--primary-color-light);
+  height: 100%;
+  outline: none;
   transition: var(--tran-05);
-  color: var(--text-color);
+  width: 100%;
 }
 
-.search-box i:hover{
+.search-box i:hover {
   cursor: pointer;
 }
 
 /* Diseño de los apartados del menu */
 .sidebar li a {
-  height: 100%;
-  width: 100%;
-  text-decoration: none;
-  display: flex;
   align-items: center;
   border-radius: 6px;
+  display: flex;
+  height: 100%;
+  text-decoration: none;
   transition: var(--tran-04);
+  width: 100%;
 }
 
 /* Animación de color sobre los componentes del menu */
@@ -215,25 +215,25 @@ body.dark .sidebar li a:hover .text {
 
 /* Separacion del contenido inferior del superior */
 .sidebar .menu-bar {
-  height: calc(100% - 65px);
   display: flex;
   flex-direction: column;
+  height: calc(100% - 65px);
   justify-content: space-between;
 }
 
 /* Diseño del switch mode */
 .menu-bar .mode {
-  position: relative;
   background: var(--primary-color-light);
   border-radius: 6px;
+  position: relative;
 }
 
 /* Diseño y formato de los logos sun y moon */
 .menu-bar .mode .moon-sun {
+  align-items: center;
+  display: flex;
   height: 50px;
   width: 60px;
-  display: flex;
-  align-items: center;
 }
 
 /* Posición de los logos sun y moon y tiempo transición al cambiar de modo.
@@ -257,40 +257,40 @@ body.dark .menu-bar .mode i.moon {
 
 /* Formato y diseño del toggle switch para cambiar de modo */
 .menu-bar .mode .toggle-switch {
+  align-items: center;
+  background: var(--primary-color-light);
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  min-width: 60px;
   position: absolute;
   right: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  min-width: 60px;
-  cursor: pointer;
-  border-radius: 6px;
-  background: var(--primary-color-light);
   transition: var(--tran-05);
 }
 
 .toggle-switch .switch {
-  position: relative;
-  height: 22px;
-  width: 44px;
-  border-radius: 25px;
   background: var(--toggle-color);
+  border-radius: 25px;
+  height: 22px;
+  position: relative;
   transition: var(--tran-05);
+  width: 44px;
 }
 
 /* Diseño del switch mode */
 .switch::before {
-  content: '';
-  position: absolute;
-  height: 15px;
-  width: 15px;
-  border-radius: 50%;
-  top: 50%;
-  left: 5px;
-  transform: translateY(-50%);
   background: var(--sidebar-color);
+  border-radius: 50%;
+  content: '';
+  height: 15px;
+  left: 5px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
   transition: var(--tran-03);
+  width: 15px;
 }
 
 /* Animación de movimiento del switch */
@@ -300,18 +300,18 @@ body.dark .switch::before {
 
 /* Formato y diseño del texto en la pestaña Home */
 .home {
-  position: relative;
-  left: 250px;
-  height: 100vh;
-  width: calc(100% - 250px);
   background: var(--boddy-color);
+  height: 100vh;
+  left: 250px;
+  position: relative;
   transition: var(--tran-05);
+  width: calc(100% - 250px);
 }
 
 .home .text {
+  color: var(--text-color);
   font-size: 30px;
   font-weight: 500;
-  color: var(--text-color);
   padding: 8px 40px;
 }
 
@@ -321,33 +321,35 @@ body.dark .switch::before {
   width: calc(100% - 88px);
 }
 
-.card-header{
+.card-header {
   background: #246180;
-  border:none;
-  outline:none;
+  border: none;
+  outline: none;
 }
 
-body.dark .card-header{
+body.dark .card-header {
   background: #246180;
-  border:none;
-  outline:none;
+  border: none;
+  outline: none;
 }
-body.dark .card-body{
+
+body.dark .card-body {
   background: var(--primary-color);
   transition: var(--tran-04);
-
 }
-body.dark .card-text{
-  color:var(--text-color);
+
+body.dark .card-text {
+  color: var(--text-color);
   transition: var(--tran-04);
 }
-body.dark .btn{
+
+body.dark .btn {
+  border-color: var(--toggle-color);
   color: var(--toggle-color);
   transition: var(--tran-04);
-  border-color: var(--toggle-color);  
 }
 
-body.dark .row{
+body.dark .row {
   color: var(--toggle-color);
   transition: var(--tran-04);
 }

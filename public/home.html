@@ -66,33 +66,38 @@
       </div>
     </nav>
 
-    
     <section class="home">
       <div class="text" id="title">Feeds</div>
       <div class="container d-flex justify-content-end mb-4">
-        <form id="formulario">
+        <form id="addRSSFeedForm">
           <div class="row">
             <div class="col-auto mt-2">
-              <label class="form-label">URL del feed</label>
+              <label class="form-label">RSS Feed URL</label>
             </div>
-            <div class="col-auto" style="width: 28rem;">
-              <input type="text" name="url" placeholder="URL:https://www.cbsnews.com/latest/rss/world" class="form-control">
+            <div class="col-auto" style="width: 28rem">
+              <input
+                type="text"
+                name="url"
+                placeholder="URL:https://www.cbsnews.com/latest/rss/world"
+                class="form-control"
+              />
             </div>
             <div class="col-auto">
-              <input type="submit" value="Agregar" class="btn btn-primary" style="background: #246180; border: none; ">
+              <input
+                type="submit"
+                value="Add"
+                class="btn btn-primary"
+                style="background: #246180; border: none"
+              />
             </div>
           </div>
-          
         </form>
       </div>
       <div class="container-fluid">
-        <div class="row" id="row">
-        </div>
+        <div class="row" id="rssFeedContainer"></div>
       </div>
-
-      
-    
     </section>
+
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"

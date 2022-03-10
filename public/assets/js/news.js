@@ -1,30 +1,37 @@
-let id = sessionStorage.getItem('id');
+const selectedRssFeedId = sessionStorage.getItem('id');
 
+/** Fetch current selected RSS Feed news */
 const fetchFeeds = () => {
-    fetch("./../app/get_all_rss_feeds.php")
+  const defaultField = 'pubDate';
+  const defaultOrder = 'asc';
+  clearRSSFeeds();
+  fetch(
+    `./../app/get_news_ordered_by.php?` +
+      `id=${selectedRssFeedId}&` +
+      `field=${defaultField}&` +
+      `sort_order=${defaultOrder}`
+  )
     .then((data) => data.json())
-    .then((result) => {
-        for (let j = 0; j < result[id].news.length; j++){
-             insertarCajasNews(result[id].news[j].title, result[id].news[j].description, result[id].news[j].categories,result[id].news[j].pubDate, result[id].news[j].url);
-        }
-    });
+    .then(renderNews);
 };
 
-function refresh(){
-    limpiar();
-    fetch(`./../app/update_rss_feeds.php?selected_rss=${String(parseInt(id)+1)}`)
-    .then((data) => data.json())
-    .then((result) => {
-        for (let j = 0; j < result.news.length; j++){
-             insertarCajasNews(result.news[j].title, result.news[j].description, result.news[j].categories,result.news[j].pubDate, result.news[j].url);
-        }
-    });
-}
+const clearRSSFeeds = () => {
+  const container = document.getElementById('newsContainer');
+  container.innerHTML = '';
+};
 
-fetchFeeds();
+const renderNews = (news) => {
+  news.forEach(renderIndividualNews);
+};
 
-function insertarCajasNews(title, description, categories,pubDate,url){
-    let cajaNews = `
+const renderIndividualNews = ({
+  title,
+  description,
+  categories,
+  pubDate,
+  url,
+}) => {
+  let newsBox = `
     <div class="col-md-6 mt-2 ps-3 pe-3">
         <div class="card text-dark bg-light mb-3 text-center rounded-bottom" style="border:none">
             <div class="card-header text-white rounded-top" style="background:#246180 outline:none">
@@ -38,74 +45,52 @@ function insertarCajasNews(title, description, categories,pubDate,url){
                 <a class="btn btn-outline-dark" href="${url}">Check the entire news</a>
             </div>
         </div>
-    </div>`
-    const rowNews = document.getElementById('news');
-    rowNews.insertAdjacentHTML('beforeend', cajaNews);
-}
-
-function limpiar(){
-    let div = document.getElementById('news');
-    div.innerHTML="";
-}
-function obtenerCampo(){
-    let lista = document.order.orderSelect;
-    let elegido = lista.selectedIndex;
-    let opcion = lista.options[elegido];
-    let field = opcion.text
-    
-    ordenar(field)
-
-}
-
-const fetchFeedsPred = () => {
-    let fieldPred = "pubDate";
-    let orderPred = "asc";
-    limpiar();
-    fetch(`./../app/get_news_ordered_by.php?id=${String(parseInt(id)+1)}&field=${fieldPred}&sort_order=${orderPred}`)
-    .then((data) => data.json())
-    .then((result) => {
-        for(let i = 0; i < result.length; i++){
-            insertarCajasNews(result[i].title, result[i].description,result[i].categories,result[i].pubDate,result[i].url)
-        }
-    });
+    </div>`;
+  const container = document.getElementById('newsContainer');
+  container.insertAdjacentHTML('beforeend', newsBox);
 };
 
-function ordenar(field){
-    let lista = document.orientation.orientationSelect;
-    let elegido = lista.selectedIndex;
-    let opcion = lista.options[elegido];
-    let order = opcion.text;
-
-    if(order == "ascendant"){
-        order = "asc";
-    }else {
-        order = "desc";
-    }
-    if(field == "date"){
-        field = "pubDate";
-    }
-    limpiar();
-    fetch(`./../app/get_news_ordered_by.php?id=${String(parseInt(id)+1)}&field=${field}&sort_order=${order}`)
+/** Refresh all RSS Feeds */
+const refresh = () => {
+  clearRSSFeeds();
+  fetch(`./../app/update_rss_feeds.php?selected_rss=${selectedRssFeedId}`)
     .then((data) => data.json())
-    .then((result) => {
-        for(let i = 0; i < result.length; i++){
-            insertarCajasNews(result[i].title, result[i].description,result[i].categories,result[i].pubDate,result[i].url)
-        }
-    });
+    .then((rssFeed) => renderNews(rssFeed.news));
+};
+
+/** Order By */
+function orderBy() {
+  const field = getSelectedField();
+  const orderType = getOrderType();
+  clearRSSFeeds();
+  fetch(
+    `./../app/get_news_ordered_by.php?id=${selectedRssFeedId}&field=${field}&sort_order=${orderType}`
+  )
+    .then((data) => data.json())
+    .then(renderNews);
 }
 
-function search(){
+const getSelectedField = () => {
+  const orderSelect = document.getElementById('orderSelect');
+  const field = orderSelect.value;
+  return field;
+};
 
-    let form = document.getElementById('formulario');
-    let datos = new FormData(formulario);
-    let title = datos.get('search');
-    limpiar()
-    fetch(`./../app/search_rss_news_by_title.php?id=${String(parseInt(id)+1)}&title=${title}`)
+const getOrderType = () => {
+  const orderTypeSelect = document.getElementById('orderTypeSelect');
+  const orderType = orderTypeSelect.value;
+  return orderType;
+};
+
+/** Search by title */
+const searchByTitle = () => {
+  const form = document.getElementById('searchByTitleForm');
+  const formData = new FormData(form);
+  const title = formData.get('search');
+  clearRSSFeeds();
+  fetch(
+    `./../app/search_rss_news_by_title.php?id=${selectedRssFeedId}&title=${title}`
+  )
     .then((data) => data.json())
-    .then((result) => {
-         for(let i = 0; i < result.length; i++){
-             insertarCajasNews(result[i].title, result[i].description,result[i].categories,result[i].pubDate,result[i].url)
-         }
-     });
-}
-
+    .then(renderNews);
+};
