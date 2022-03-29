@@ -1,10 +1,21 @@
 const selectedRssFeedId = sessionStorage.getItem('id');
+const searchByTitleButton = document.getElementById('searchByTitleButton');
+const refreshButton = document.getElementById('refreshButton');
+const orderByButton = document.getElementById('orderByButton');
+
+window.onload = () => {
+  fetchSelectedFeedNews();
+};
 
 /** Fetch current selected RSS Feed news */
-const fetchFeeds = () => {
+export const fetchSelectedFeedNews = () => {
+  clearRSSFeeds();
+  fetchAndRenderRssFeedNews();
+};
+
+const fetchAndRenderRssFeedNews = () => {
   const defaultField = 'pubDate';
   const defaultOrder = 'asc';
-  clearRSSFeeds();
   fetch(
     `./../app/get_news_ordered_by.php?` +
       `id=${selectedRssFeedId}&` +
@@ -24,42 +35,44 @@ const renderNews = (news) => {
   news.forEach(renderIndividualNews);
 };
 
-const renderIndividualNews = ({
-  title,
-  description,
-  categories,
-  pubDate,
-  url,
-}) => {
-  let newsBox = `
-    <div class="col-md-6 mt-2 ps-3 pe-3">
-        <div class="card text-dark bg-light mb-3 text-center rounded-bottom" style="border:none">
-            <div class="card-header text-white rounded-top" style="background:#246180 outline:none">
-                ${title}
-            </div>
-            <div class="card-body">
-                <p class="card-text" style="overflow:hidden">${description} </p>
-                <p class="card-text">${categories}</p>
-                <p class="card-text">${url}</p>
-                <footer><p class="card-text mb-3">${pubDate.date}</p></footer>
-                <a class="btn btn-outline-dark" href="${url}">Check the entire news</a>
-            </div>
-        </div>
-    </div>`;
+const renderIndividualNews = (news) => {
+  const newsBox = generateNewsBox(news);
   const container = document.getElementById('newsContainer');
   container.insertAdjacentHTML('beforeend', newsBox);
 };
 
+const generateNewsBox = ({ title, description, categories, pubDate, url }) => {
+  return ` 
+<div class="col-md-6 mt-2 ps-3 pe-3">
+  <div class="card text-dark bg-light mb-3 text-center rounded-bottom" style="border:none">
+    <div class="card-header text-white rounded-top" style="background:#246180 outline:none">
+      ${title}
+    </div>
+    <div class="card-body">
+      <p class="card-text" style="overflow:hidden">${description} </p>
+      <p class="card-text">${categories}</p>
+      <p class="card-text">${url}</p>
+      <footer>
+        <p class="card-text mb-3">
+          ${pubDate.date}
+        </p>
+      </footer>
+      <a class="btn btn-outline-dark" href="${url}">Check the entire news</a>
+    </div>
+  </div>
+</div>`;
+};
+
 /** Refresh all RSS Feeds */
-const refresh = () => {
+refreshButton.addEventListener('click', () => {
   clearRSSFeeds();
   fetch(`./../app/update_rss_feeds.php?selected_rss=${selectedRssFeedId}`)
     .then((data) => data.json())
     .then((rssFeed) => renderNews(rssFeed.news));
-};
+});
 
 /** Order By */
-function orderBy() {
+orderByButton.addEventListener('click', () => {
   const field = getSelectedField();
   const orderType = getOrderType();
   clearRSSFeeds();
@@ -68,7 +81,7 @@ function orderBy() {
   )
     .then((data) => data.json())
     .then(renderNews);
-}
+});
 
 const getSelectedField = () => {
   const orderSelect = document.getElementById('orderSelect');
@@ -83,7 +96,7 @@ const getOrderType = () => {
 };
 
 /** Search by title */
-const searchByTitle = () => {
+searchByTitleButton.addEventListener('click', () => {
   const form = document.getElementById('searchByTitleForm');
   const formData = new FormData(form);
   const title = formData.get('search');
@@ -93,4 +106,4 @@ const searchByTitle = () => {
   )
     .then((data) => data.json())
     .then(renderNews);
-};
+});

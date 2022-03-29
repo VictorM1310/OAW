@@ -1,0 +1,61 @@
+const path = require('path');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+module.exports = {
+  mode: 'development',
+  entry: {
+    home: path.resolve(__dirname, 'public/assets/js/entries/HomeEntryPoint.js'),
+    news: path.resolve(__dirname, 'public/assets/js/entries/NewsEntryPoint.js'),
+  },
+  output: {
+    path: path.resolve(__dirname, 'build'),
+    filename: '[name]_[contenthash].js',
+    clean: true,
+  },
+  devServer: {
+    static: {
+      directory: path.resolve(__dirname, 'build'),
+    },
+    port: 3000,
+    open: true,
+    hot: true,
+    compress: true,
+    historyApiFallback: true,
+  },
+  optimization: {
+    minimizer: [
+      new UglifyJsPlugin({
+        uglifyOptions: {
+          compress: {
+            dead_code: false,
+            drop_console: true,
+            unused: false,
+          },
+        },
+      }),
+    ],
+  },
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
+      },
+    ],
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: 'Home',
+      filename: 'home.html',
+      template: 'public/home.html',
+      chunks: ['home'],
+    }),
+    new HtmlWebpackPlugin({
+      title: 'News',
+      filename: 'news.html',
+      template: 'public/news.html',
+      chunks: ['news'],
+    }),
+  ],
+};

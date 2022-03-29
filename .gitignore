@@ -1,2 +1,5 @@
 **/vendor/
 *.lock
+.env
+**/build/
+node_modules/

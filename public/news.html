@@ -20,7 +20,7 @@
     <title>News</title>
   </head>
 
-  <body onload="fetchFeeds()">
+  <body>
     <!-- sidebar -->
     <nav class="sidebar close">
       <header>
@@ -40,7 +40,7 @@
       <div class="menu-bar">
         <div class="menu">
           <li class="search-box">
-            <i class="bx bx-search icon" onclick="searchByTitle()"></i>
+            <i id="searchByTitleButton" class="bx bx-search icon"></i>
             <form id="searchByTitleForm">
               <input type="search" name="search" placeholder="Search..." />
             </form>
@@ -75,8 +75,8 @@
       <div class="text">News</div>
       <div class="container d-flex justify-content-end mb-3">
         <button
+          id="refreshButton"
           type="button"
-          onclick="refresh()"
           class="btn btn-primary mb-2"
           style="background-color: #246180; border: none"
         >
@@ -110,9 +110,9 @@
             <option value="desc">Descendant</option>
           </select>
           <input
+            id="orderByButton"
             type="button"
             value="Order news"
-            onclick="orderBy()"
             class="btn btn-primary mt-4"
             style="background: #246180; border: none"
           />
@@ -128,7 +128,6 @@
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
       crossorigin="anonymous"
     ></script>
-    <!-- <script src="assets/js/feeds.js"></script> -->
     <script src="assets/js/sidebar.js"></script>
     <script src="assets/js/news.js"></script>
   </body>
