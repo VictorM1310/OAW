@@ -6,8 +6,8 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 module.exports = {
   mode: 'development',
   entry: {
-    home: path.resolve(__dirname, 'public/assets/js/entries/HomeEntryPoint.js'),
-    news: path.resolve(__dirname, 'public/assets/js/entries/NewsEntryPoint.js'),
+    home: path.resolve(__dirname, 'webpack/entries/HomeEntryPoint.js'),
+    news: path.resolve(__dirname, 'webpack/entries/NewsEntryPoint.js'),
   },
   output: {
     path: path.resolve(__dirname, 'build'),
@@ -49,13 +49,13 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: 'Home',
       filename: 'home.html',
-      template: 'public/home.html',
+      template: 'webpack/templates/home.html',
       chunks: ['home'],
     }),
     new HtmlWebpackPlugin({
       title: 'News',
       filename: 'news.html',
-      template: 'public/news.html',
+      template: 'webpack/templates/news.html',
       chunks: ['news'],
     }),
     new CopyWebpackPlugin({
