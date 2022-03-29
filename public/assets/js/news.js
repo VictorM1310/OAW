@@ -8,7 +8,7 @@ window.onload = () => {
 };
 
 /** Fetch current selected RSS Feed news */
-export const fetchSelectedFeedNews = () => {
+const fetchSelectedFeedNews = () => {
   clearRSSFeeds();
   fetchAndRenderRssFeedNews();
 };
@@ -44,8 +44,8 @@ const renderIndividualNews = (news) => {
 const generateNewsBox = ({ title, description, categories, pubDate, url }) => {
   return ` 
 <div class="col-md-6 mt-2 ps-3 pe-3">
-  <div class="card text-dark bg-light mb-3 text-center rounded-bottom" style="border:none">
-    <div class="card-header text-white rounded-top" style="background:#246180 outline:none">
+  <div class="card text-dark bg-light mb-3 text-center rounded-bottom border-0">
+    <div class="card-header text-white bg-dark-blue rounded-top">
       ${title}
     </div>
     <div class="card-body">

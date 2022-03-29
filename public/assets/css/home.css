@@ -9,10 +9,11 @@
 
 :root {
   /* Variables para los colores del light mode */
-  --boddy-color: #e4e9f7;
+  --body-color: #e4e9f7;
   --sidebar-color: #fff;
   --primary-color: #19b37f;
   --primary-color-light: #f6f5ff;
+  --dark-blue-color: #246180;
   --toggle-color: #ddd;
   --text-color: #707070;
   /* Variables de transiciónes */
@@ -23,12 +24,6 @@
   --tran-06: all 0.6s ease;
 }
 
-body {
-  background: var(--boddy-color);
-  height: 100vh;
-  transition: var(--tran-05);
-}
-
 /* Variables para el dark mode */
 body.dark {
   --boddy-color: #18191a;
@@ -37,6 +32,16 @@ body.dark {
   --primary-color-light: #3a3b3c;
   --toggle-color: #fff;
   --text-color: #ccc;
+}
+
+body {
+  background: var(--body-color);
+  height: 100vh;
+  transition: var(--tran-05);
+}
+
+.bg-dark-blue {
+  background-color: var(--dark-blue-color);
 }
 
 /*Sidebar*/
@@ -159,6 +164,7 @@ body.dark .sidebar header .toggle {
 .sidebar .menu-links {
   padding-left: 0;
 }
+
 /* Formato y diseño de la caja de busqueda */
 .sidebar .search-box {
   background: var(--primary-color-light);
@@ -300,7 +306,7 @@ body.dark .switch::before {
 
 /* Formato y diseño del texto en la pestaña Home */
 .home {
-  background: var(--boddy-color);
+  background: var(--body-color);
   height: 100vh;
   left: 250px;
   position: relative;

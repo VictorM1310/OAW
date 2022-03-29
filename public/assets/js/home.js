@@ -51,8 +51,8 @@ const addListenerToNewlyAddedRssFeedBox = (id) => {
 const generateRssFeedBox = ({ id, title, description }) => {
   return `
 <div class="col-md-6 mt-2 ps-3 pe-3">
-  <div class="card text-dark bg-light mb-3 text-center rounded-bottom" style="border:none">
-    <div class="card-header text-white rounded-top" style="background:#246180 outline:none">
+  <div class="card text-dark bg-light mb-3 text-center rounded-bottom border-0">
+    <div class="card-header text-white rounded-top bg-dark-blue">
       ${title}
     </div>
     <div class="card-body">
