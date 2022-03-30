@@ -6,14 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Feeds</title>
     <link
+      rel="preload"
+      as="style"
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous"
+      onload="this.onload=null;this.rel='stylesheet'"
     />
     <link
+      rel="preload"
+      as="style"
       href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css"
-      rel="stylesheet"
+      onload="this.onload=null;this.rel='stylesheet'"
     />
     <link rel="stylesheet" href="assets/css/home.css" />
   </head>
@@ -24,7 +28,12 @@
         <!-- Encabezado y logo -->
         <div class="image-text">
           <span class="image">
-            <img src="assets/img/logo-libro.png" alt="Book" />
+            <img
+              src="assets/img/logo-libro.png"
+              alt="Book"
+              width="60px"
+              height="60px"
+            />
           </span>
           <div class="text header-text">
             <span class="name">YourNews</span>
@@ -46,8 +55,8 @@
           </ul>
         </div>
 
-        <!-- Logout y mode switch -->
-        <div class="bottom-content">
+        <!-- Mode switch -->
+        <ul class="list-unstyled">
           <li class="mode">
             <div class="moon-sun">
               <i class="bx bxs-moon icon moon"></i>
@@ -58,7 +67,7 @@
               <span class="switch"></span>
             </div>
           </li>
-        </div>
+        </ul>
       </div>
     </nav>
 

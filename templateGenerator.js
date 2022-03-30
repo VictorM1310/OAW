@@ -35,8 +35,13 @@ const removeDevLinkTags = (dom) => {
 };
 
 const writeProcessedDom = (processedDom, outputFile) => {
-  const html = processedDom.window.document.documentElement.innerHTML;
+  const html = extractHTMLFromProcessedDOM(processedDom);
   fs.writeFileSync(outputFile, html, 'utf-8');
+};
+
+const extractHTMLFromProcessedDOM = (processedDom) => {
+  const outerHtml = processedDom.window.document.documentElement.outerHTML;
+  return '<!DOCTYPE html>' + '\n' + outerHtml;
 };
 
 try {

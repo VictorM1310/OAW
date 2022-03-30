@@ -13,9 +13,11 @@ toggle.addEventListener('click', () => {
 
 //Si se tiene cerrado el menu y se le da click
 //al simbolo de buscar se abre el menu
-//searchBtn.addEventListener('click', () => {
-//  sidebar.classList.remove('close');
-//});
+if (searchBtn) {
+  searchBtn.addEventListener('click', () => {
+    sidebar.classList.remove('close');
+  });
+}
 
 //Usando método para cambiar el modo de la página.
 //Dependiendo del modo se verá el menu

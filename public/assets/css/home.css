@@ -26,7 +26,7 @@
 
 /* Variables para el dark mode */
 body.dark {
-  --boddy-color: #18191a;
+  --body-color: #18191a;
   --sidebar-color: #242526;
   --primary-color: #3a3b3c;
   --primary-color-light: #3a3b3c;
@@ -206,8 +206,7 @@ body.dark .sidebar header .toggle {
   background: var(--primary-color);
 }
 
-/* Cambio de color a los componentes del menú 
-   en light mode */
+/* Cambio de color a los componentes del menú en light mode */
 .sidebar li a:hover .icon,
 .sidebar li a:hover .text {
   color: var(--sidebar-color);

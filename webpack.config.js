@@ -8,8 +8,10 @@ const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 module.exports = {
   mode: 'development',
   entry: {
-    home: path.resolve(__dirname, 'webpack/entries/HomeEntryPoint.js'),
-    news: path.resolve(__dirname, 'webpack/entries/NewsEntryPoint.js'),
+    home: path.resolve(__dirname, 'public/assets/js/home.js'),
+    news: path.resolve(__dirname, 'public/assets/js/news.js'),
+    sidebar: path.resolve(__dirname, 'public/assets/js/sidebar.js'),
+    style: path.resolve(__dirname, 'public/assets/css/home.css'),
   },
   output: {
     path: path.resolve(__dirname, 'build'),
@@ -33,7 +35,7 @@ module.exports = {
         uglifyOptions: {
           compress: {
             dead_code: false,
-            drop_console: true,
+            drop_console: false,
             unused: false,
           },
           output: {
@@ -57,13 +59,13 @@ module.exports = {
       title: 'Home',
       filename: 'home.html',
       template: 'webpack/templates/home.html',
-      chunks: ['home'],
+      chunks: ['home', 'sidebar', 'style'],
     }),
     new HtmlWebpackPlugin({
       title: 'News',
       filename: 'news.html',
       template: 'webpack/templates/news.html',
-      chunks: ['news'],
+      chunks: ['news', 'sidebar', 'style'],
     }),
     new CopyWebpackPlugin({
       patterns: [
@@ -73,6 +75,8 @@ module.exports = {
         },
       ],
     }),
-    new MiniCssExtractPlugin(),
+    new MiniCssExtractPlugin({
+      filename: '[name]_[contenthash].css',
+    }),
   ],
 };
