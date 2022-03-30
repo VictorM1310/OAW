@@ -79,3 +79,10 @@ const fetchFeeds = () => {
     .then((result) => console.log(result));
 };
 ```
+
+Proyecto de optimización de aplicaciones web
+## Miembros del equipo
+
+|                              Nicolás Canul                                        |                               Carlos Chan                             |                             Víctor Mendoza                                 |                                Luis Valencia                              |
+|:---------------------------------------------------------------------------------:| :--------------------------------------------------------------------:| :-------------------------------------------------------------------------:| :------------------------------------------------------------------------:|
+|<img src="public/team/nicolás_canul.jpeg" alt="Foto de Nicolás Canul" width=150px>         | <img src="public/team/carlos_chan.jpeg" alt="Foto de Carlos Chan" width=150px>| <img src="public/team/victor_mendoza.jpg" alt="Foto de Víctor Mendoza" width=150px>| <img src="public/team/luis_valencia.jpeg" alt="Foto de Luis Valencia" width=150px>|
