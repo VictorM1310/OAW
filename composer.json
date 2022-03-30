@@ -1,0 +1,21 @@
+{
+  "require": {
+    "dg/rss-php": "^1.5",
+    "doctrine/orm": "^2.11.0",
+    "doctrine/dbal": "^3.2",
+    "doctrine/annotations": "1.13.2",
+    "symfony/yaml": "^5.4",
+    "symfony/cache": "^5.4",
+    "vlucas/phpdotenv": "^5.4",
+    "php-di/php-di": "^6.3"
+  },
+  "autoload": {
+    "psr-4": {
+      "Model\\": "app/models",
+      "Repository\\": "app/repositories",
+      "Service\\": "app/services",
+      "Service\\Exception\\": "app/services/exceptions",
+      "Core\\": "app/core"
+    }
+  }
+}
