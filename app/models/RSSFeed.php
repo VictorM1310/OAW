@@ -75,12 +75,20 @@ class RSSFeed implements JsonSerializable {
     ];
   }
 
-  function getUrl() {
-    return $this->url;
+  function getId() {
+    return $this->id;
   }
 
   function getTitle() {
     return $this->title;
+  }
+
+  function getDescription() {
+    return $this->description;
+  }
+
+  function getUrl() {
+    return $this->url;
   }
 
   function getNews() {

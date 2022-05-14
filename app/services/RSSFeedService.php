@@ -3,6 +3,7 @@
 namespace Service;
 
 use Core\XmlRSSFeedFetcher;
+use Dto\RSSFeedDto;
 use Repository\RSSFeedRepository;
 
 class RSSFeedService {
@@ -15,7 +16,10 @@ class RSSFeedService {
   }
 
   function getAll() {
-    return $this->rssFeedRepo->findAll();
+    $rssFeeds = $this->rssFeedRepo->findAll();
+    return array_map(function ($rssFeed) {
+      return new RSSFeedDto($rssFeed);
+    }, $rssFeeds);
   }
 
   function getById($rssId) {

@@ -12,6 +12,7 @@
   "autoload": {
     "psr-4": {
       "Model\\": "app/models",
+      "Dto\\": "app/dtos",
       "Repository\\": "app/repositories",
       "Service\\": "app/services",
       "Service\\Exception\\": "app/services/exceptions",
