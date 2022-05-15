@@ -86,17 +86,22 @@ const fetchFeeds = () => {
 
 Se habilitó el módulo _mod_deflate_ (en Apache) y _zlib_ (en PHP) para la compresión de archivos cuando son enviados al cliente.
 
-- [Link que se siguió para la configuración](https://ourcodeworld.co/articulos/leer/503/como-habilitar-la-compresion-gzip-en-xampp-server)
+- [Link que se siguió para la configuración](https://ourcodeworld.co/articulos/leer/503/como-habilitar-la-compresion-gzip-en-xampp-server).
 
 ### mod_cache
 
 Se habilitó el módulo _mod_cache_ en servidor.
 
-- [Link que se siguió para la configuración](https://publib.boulder.ibm.com/httpserv/manual70/mod/mod_cache.html)
+- [Link que se siguió para la configuración](https://publib.boulder.ibm.com/httpserv/manual70/mod/mod_cache.html).
 
-### Reducción del tamaño de las respuestas.
+### Reducción del tamaño de las respuestas
 
 Cuando se solicitan las **RSS Feeds** guardadas, únicamente se envía la mínima información para mostrar en el home (anteriormente los **Feeds** se enviaban con todo y las noticias).
+
+### Extensión _*php_opcache*_ para habilitar el OPCache de PHP
+
+- [Link que se siguió para activar la extensión](https://odan.github.io/2017/02/05/xampp-how-to-enable-php-opcache.html).
+- La configuración adicional se obtuvo de la presentación 3 [**_Compresión y cache_**](https://intranet.matematicas.uady.mx/enlinea2_mar21/mod/folder/view.php?id=1584).
 
 ## Miembros del equipo
 
