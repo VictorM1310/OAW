@@ -82,6 +82,16 @@ const fetchFeeds = () => {
 
 ## Optimizaciones
 
+### Archivos del cliente
+
+Los archivos de la aplicación web fueron sometidos a un proceso de minimización automatizado haciendo uso de la herramienta Webpack.
+
+- [Link de la herramienta webpack](https://webpack.js.org/).
+
+### Imágenes
+
+Se hizo uso de la herramienta online imagecompressor.com para optimizar las imágenes estáticas empleadas en la aplicación, reduciendo la calidad al 50%.
+
 ### mod_deflate & zlib
 
 Se habilitó el módulo _mod_deflate_ (en Apache) y _zlib_ (en PHP) para la compresión de archivos cuando son enviados al cliente.
